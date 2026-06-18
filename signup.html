@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}নাগরিক নিবন্ধন{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5">
+    <div class="card">
+      <div class="card-header py-3 text-center">
+        <h4 class="mb-0">📋 নাগরিক নিবন্ধন</h4>
+        <small style="opacity:.8">Reference ছবি সহ নিবন্ধন করুন</small>
+      </div>
+      <div class="card-body p-4">
+        <form method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label class="form-label fw-semibold">পূর্ণ নাম</label>
+            <input class="form-control" name="name" placeholder="আপনার নাম লিখুন" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label fw-semibold">ইমেইল</label>
+            <input class="form-control" type="email" name="email" placeholder="example@email.com" required>
+          </div>
+          <div class="mb-4">
+            <label class="form-label fw-semibold">Reference ছবি</label>
+            <input class="form-control" type="file" name="photo" accept="image/*" required>
+            <div class="form-text">স্পষ্ট মুখের ছবি দিন। এটি ভেরিফিকেশনে ব্যবহার হবে।</div>
+          </div>
+          <button class="btn btn-primary w-100 py-2 fw-semibold">নিবন্ধন করুন →</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

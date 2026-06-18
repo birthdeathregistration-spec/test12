@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Civic-Tech Demo{% endblock %}</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: "Noto Sans Bengali", sans-serif; background: #f0f4f8; }
+    .brand-bar { background: #003580; color: #fff; padding: 12px 0; }
+    .brand-bar h1 { font-size: 1.2rem; margin: 0; }
+    .card { border: none; border-radius: 16px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+    .card-header { border-radius: 16px 16px 0 0 !important; background: #003580; color: #fff; }
+    .btn-primary { background: #003580; border-color: #003580; }
+    .btn-primary:hover { background: #00256b; border-color: #00256b; }
+    .badge-method { font-size: .85rem; padding: .4em .8em; border-radius: 8px; }
+    footer { background: #003580; color: #cdd8e8; font-size: .82rem; }
+  </style>
+</head>
+<body>
+<div class="brand-bar">
+  <div class="container d-flex align-items-center gap-3">
+    <span style="font-size:1.8rem">🏛️</span>
+    <div>
+      <h1>Civic-Tech Verification Demo</h1>
+      <small style="opacity:.75">ইউনিয়ন ডিজিটাল সেন্টার · পরিচয় যাচাই পোর্টাল</small>
+    </div>
+  </div>
+</div>
+
+<div class="container py-4">
+  {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in msgs %}
+      <div class="alert alert-{{ "danger" if cat == "error" else ("success" if cat == "success" else "info") }} alert-dismissible fade show" role="alert">
+        {{ msg }}
+        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      </div>
+    {% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</div>
+
+<footer class="mt-5 py-3 text-center">
+  <div class="container">Civic-Tech Prototype · শুধুমাত্র ডেমো উদ্দেশ্যে · কোনো আসল তথ্য সংরক্ষণ করা হয় না</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

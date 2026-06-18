@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}আপনার QR কোড{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6 col-lg-5 text-center">
+    <div class="card">
+      <div class="card-header py-3">
+        <h4 class="mb-0">✅ নিবন্ধন সফল!</h4>
+        <small style="opacity:.8">{{ name }} — {{ email }}</small>
+      </div>
+      <div class="card-body p-4">
+        <p class="text-muted mb-3">এটি আপনার ব্যক্তিগত QR কোড। ভেরিফিকেশনের সময় এটি আপলোড করুন।</p>
+        <div class="border rounded p-3 d-inline-block bg-white mb-3">
+          <img src="{{ url_for('qr_image', email=email) }}" alt="QR Code" style="width:200px;height:200px">
+        </div>
+        <div class="d-grid gap-2">
+          <a href="{{ url_for('qr_image', email=email) }}" download="my_qr.png"
+             class="btn btn-outline-primary fw-semibold">⬇️ QR কোড ডাউনলোড করুন</a>
+          <a href="{{ url_for('verify', email=email) }}"
+             class="btn btn-primary fw-semibold">ভেরিফিকেশনে যান →</a>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-warning mt-3 text-start">
+      <strong>⚠️ গুরুত্বপূর্ণ:</strong> এই QR কোডটি সংরক্ষণ করুন। ভেরিফিকেশনের সময় এটি প্রয়োজন হবে।
+    </div>
+  </div>
+</div>
+{% endblock %}

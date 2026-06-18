@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}OTP যাচাই{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5 col-lg-4">
+    <div class="card">
+      <div class="card-header py-3 text-center">
+        <h4 class="mb-0">🔢 OTP যাচাই</h4>
+        <small style="opacity:.8">{{ email }}</small>
+      </div>
+      <div class="card-body p-4">
+        <div class="alert alert-info">
+          <strong>ℹ️ ডেমো মোড:</strong> OTP কোডটি server console-এ দেখুন।
+        </div>
+        <form method="post">
+          <div class="mb-4">
+            <label class="form-label fw-semibold">৬ সংখ্যার OTP কোড</label>
+            <input class="form-control form-control-lg text-center fw-bold"
+                   name="otp" maxlength="6" placeholder="000000"
+                   style="letter-spacing:.5rem; font-size:1.6rem" required autofocus>
+          </div>
+          <button class="btn btn-primary w-100 py-2 fw-semibold">যাচাই করুন →</button>
+        </form>
+        <hr class="my-3">
+        <div class="text-center">
+          <a href="{{ url_for('otp', email=email) }}" class="btn btn-sm btn-outline-secondary">
+            🔄 নতুন OTP পাঠান
+          </a>
+          <a href="{{ url_for('verify', email=email) }}" class="btn btn-sm btn-outline-secondary ms-2">
+            ← ফেস / QR-এ ফিরুন
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
